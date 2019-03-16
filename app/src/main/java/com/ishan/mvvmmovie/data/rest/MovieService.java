@@ -9,6 +9,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 public interface MovieService {
@@ -16,4 +17,7 @@ public interface MovieService {
     //get movie list
     @GET("/3/movie/popular")
     Observable<MoviePopular> getPopularMovies(@QueryMap HashMap<String,Object> params);
+
+    @GET("/3/movie/{movie_id}/reviews")
+    Observable<JsonObject> getMovieReviews(@Path("movie_id") String  movieId,@QueryMap HashMap<String,Object> params);
 }
